@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manga Reader - Capítulo 3</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .reader-container {
+            text-align: center;
+            max-width: 100%;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        .nav-buttons {
+            margin-top: 20px;
+        }
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="reader-container">
+        <h1>Capítulo 3</h1>
+        <img id="mangaImage" src="https://mangalivre.to/wp-content/uploads/WP-manga/data/manga_687bdcff513a3/cc58f7b3a25a08368657317921348cce/003.webp" alt="Capitulo 3">
+        <div class="nav-buttons">
+            <button onclick="previousPage()">Anterior</button>
+            <button onclick="nextPage()">Próximo</button>
+        </div>
+    </div>
+    <script>
+        let currentPage = 1;
+        const baseUrl = "https://mangalivre.to/wp-content/uploads/WP-manga/data/manga_687bdcff513a3/cc58f7b3a25a08368657317921348cce/";
+        
+        function updateImage() {
+            const pageStr = currentPage.toString().padStart(3, '0');
+            document.getElementById('mangaImage').src = baseUrl + pageStr + ".webp";
+        }
+        
+        function nextPage() {
+            currentPage++;
+            updateImage();
+        }
+        
+        function previousPage() {
+            currentPage--;
+            updateImage();
+        }
+    </script>
+</body>
+</html>
