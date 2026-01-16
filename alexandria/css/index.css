@@ -1,0 +1,13 @@
+.logo
+{
+    width: "40";
+    height: "40";
+    
+}
+
+/*tamanho dos livros*/
+.card img {
+  height: 250px;
+  object-fit: cover;
+}
+

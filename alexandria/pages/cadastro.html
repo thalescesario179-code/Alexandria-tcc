@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro</title>
+
+  <link 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+    rel="stylesheet"
+  >
+</head>
+<body class="bg-light">
+
+  <div class="container vh-100 d-flex align-items-center justify-content-center">
+    <div class="card shadow" style="width: 22rem;">
+
+      <!-- Logo -->
+      <div class="card-header bg-warning text-center">
+        <img 
+          src="../img/ALEXANDRIA.png" 
+          class="img-fluid"
+          style="max-height: 80px;"
+          alt="Logo"
+        >
+      </div>
+
+      <div class="card-body">
+        <!-- FORM PRONTO PARA BACKEND -->
+        <form 
+          id="formCadastro"
+          method="POST"
+          action="/cadastro"
+          novalidate
+        >
+          <!--Nome-->
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input 
+              type="text"
+              class="form-control"
+              id="nome"
+              name="nome"
+              placeholder="Digite seu nome"
+              required
+            >
+            <div class="invalid-feedback">
+              Informe um e-mail válido.
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input 
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              placeholder="seu@email.com"
+              required
+            >
+            <div class="invalid-feedback">
+              Informe um e-mail válido.
+            </div>
+          </div>
+
+          <!-- Senha -->
+          <div class="mb-3">
+            <label for="senha" class="form-label">Senha</label>
+            <input 
+              type="password"
+              class="form-control"
+              id="senha"
+              name="senha"
+              required
+            >
+          </div>
+
+          <!-- Confirmar senha -->
+          <div class="mb-3">
+            <label for="confirmarSenha" class="form-label">Confirmar senha</label>
+            <input 
+              type="password"
+              class="form-control"
+              id="confirmarSenha"
+              name="confirmar_senha"
+              required
+            >
+            <div class="invalid-feedback">
+              As senhas não coincidem.
+            </div>
+            <div class="valid-feedback">
+              Senhas conferem.
+            </div>
+          </div>
+
+          <!-- Botão -->
+          <button type="submit" class="btn btn-warning text-white w-100 fw-bold">
+            Cadastrar
+          </button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("formCadastro");
+    const senha = document.getElementById("senha");
+    const confirmarSenha = document.getElementById("confirmarSenha");
+
+    function validarSenha() {
+      if (confirmarSenha.value === "") {
+        confirmarSenha.classList.remove("is-valid", "is-invalid");
+        return;
+      }
+
+      if (senha.value === confirmarSenha.value) {
+        confirmarSenha.classList.add("is-valid");
+        confirmarSenha.classList.remove("is-invalid");
+      } else {
+        confirmarSenha.classList.add("is-invalid");
+        confirmarSenha.classList.remove("is-valid");
+      }
+    }
+
+    senha.addEventListener("input", validarSenha);
+    confirmarSenha.addEventListener("input", validarSenha);
+
+    form.addEventListener("submit", function (event) {
+      if (!form.checkValidity() || senha.value !== confirmarSenha.value) {
+        event.preventDefault();
+        event.stopPropagation();
+        validarSenha();
+      }
+      form.classList.add("was-validated");
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
